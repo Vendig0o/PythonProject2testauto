@@ -1,3 +1,5 @@
+from tests.test_register_and_login import login_user
+
 USER_DATA_SCHEME = {
     "type" : "object",
     "properties" : {
@@ -40,4 +42,21 @@ UPDATE_USER_DATA_SCHEME = {
         "updatedAt": {"type": "string"}
     },
     "required" : ["updatedAt", "name", "job"]
+}
+
+REGISTER_USER_DATA_SCHEME = {
+    "type" : "object",
+    "properties" : {
+        "id": {"type": "number"},
+        "token": {"type": "string"}
+    },
+    "required" : ["id", "token"]
+}
+
+LOGIN_USER_DATA_SCHEME = {
+    "type" : "object",
+    "properties" : {
+        "token": {"type": "string"}
+    },
+    "required" : ["token"]
 }
