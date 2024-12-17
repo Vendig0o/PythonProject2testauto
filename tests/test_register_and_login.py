@@ -18,7 +18,8 @@ users_data = json.load(json_file)
 
 @pytest.mark.parametrize('users_data', users_data)
 def test_successful_register(users_data):
-    response = httpx.post(base_url + register_user, json=users_data)
+    headers = {'Content-Type': 'application/json'}
+    response = httpx.post(base_url + register_user, json=users_data,headers=headers)
     assert response.status_code == 200
     validate(response.json(), REGISTER_USER_DATA_SCHEME)
 
