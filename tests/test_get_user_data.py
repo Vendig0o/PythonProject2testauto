@@ -9,6 +9,7 @@ base_url = "https://reqres.in/"
 list_users = "api/users?page=2"
 email_ends = "@reqres.in"
 single_user = "api/users/2"
+delayed_users = "api/users?delay=3"
 
 @allure.suite("Проверка запроса пользователей")
 @allure.title("Проверка получения списка пользователей")
@@ -52,3 +53,6 @@ def test_single_user_404():
         response = httpx.get(base_url + single_user + "3") #мне стало лень делать отдельнкую переменную
     with allure.step("Проверяем статус код == 404"):
         assert response.status_code == 404
+
+def test_delayed_user_list():
+    response = httpx.get(base_url + delayed_users, timeout=3)
